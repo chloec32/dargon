@@ -1,0 +1,358 @@
+#Print intro
+import time
+import random
+print("Welcome to Dargon!")
+time.sleep(.5)
+print("~~~~~~~You must chose your adventurer!~~~~~~~~")
+print("A. John Locke; 120 HP, 7 speed, 4 strength, and 3 block!")
+print("B. John Johnson;110 HP, 8 speed, 6 strength, and 1 block!")
+print("C. Jimmy John's; 100 HP, 10 speed, 4 strength, and 2 block!")
+print("D. Nhoj johN; 140 HP, 2 speed, 6 strength, and 4 block!")
+print("E. Johnny; 100 HP, 6 speed, 6 strength, and 4 block!")
+print("F. carl; 110 HP, 4 speed, 6 strength, and 5 block!")
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+hero = input("Choose your adventurer! (Pick a letter!) ")
+if hero == 'a' or hero == 'A':
+    #Store in parallel lists
+    HP = 120
+    speed = 7
+    bl = 3
+    st = 4
+if hero == 'b' or hero == 'B':
+    HP = 110
+    speed = 6
+    bl = 1
+    st = 6
+if hero == 'c' or hero == 'C':
+    HP = 100
+    speed = 10
+    bl = 2
+    st = 4
+if hero == 'd' or hero == 'D':
+    HP = 140
+    speed = 2
+    bl = 4
+    st = 6
+if hero == 'e' or hero == 'E':
+    HP = 100
+    speed = 6
+    bl = 4
+    st = 6
+if hero == 'f' or hero == 'F':
+    HP = 110
+    speed = 4
+    bl = 5
+    st = 6
+if hero == 'tester':
+    HP = 500
+    speed = 100
+    bl = 100
+    st = 100
+time.sleep(1)
+dr = random.randint(1,4)
+if dr == 1:
+    print("You were exlploring a long deserted cave and stumbled upon DJ Rizzy Royce the Fire(ish) Dargon!")
+    DH = 180
+if dr == 2:
+    print("You were exlploring a long deserted cave and stumbled upon Ice the Ice Dargon!")
+    DH = 200
+if dr == 3:
+    print("You were exlploring a long deserted cave and stumbled upon Toxic: by Britney Spears the Poison Dargon!")
+    DH = 190
+if dr == 4:
+    print("You were exlploring a long deserted cave and stumbled upon Michael the Spikael Dargon!")
+    DH = 210
+time.sleep(1)
+print("You must survive the Dargon's attacks while attempting to kill him!")
+time.sleep(1)
+print("You are equipped with a sword, a bow with 3 arrows, 1 remedy potion, and 3 health potions!")
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+#variable for items
+fire = False
+ice = False
+poison = False
+potion = 3
+rpot = 1
+arrow = 3
+bloc = False
+death = False
+win = False
+#Main loop
+time.sleep(1)
+done = False
+while done == False:
+    print("A. Attack the dargon with your sword.")
+    print("B. Shoot an arrow at the dargon.")
+    print("C. Prepare to block the dargon's attack.")
+    print("D. Drink a health potion")
+    print("E. Drink a remedy potion!")
+    print("Q. Run away!")
+    print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    choice = input("Your choice? ")
+    bloc = False
+    if fire == True:
+        print("You take fire damage!")
+        HP = HP - 15
+    if ice == True:
+        print("You take ice damage!")
+        HP = HP - 10
+        speed = speed - 1
+        print("Your speed is now", speed)
+    if poison == True:
+        print("You take poison damage!")
+        HP = HP - 15
+    if choice == 'q' or choice == 'Q':
+        done = True
+        time.sleep(.5)
+        print('Wimp!')
+    #sword------------------------------------------------------------------------------------------------------------------------
+    if choice == 'a' or choice == 'A':
+        attack = random.randint(1,6)
+        if attack == 1 or attack == 6:
+            st1 = st * 5
+            DH = DH - st1
+            print("You succeeded! You did ", st1, " damage to the dargon!")
+        if attack == 2:
+            print("You try to attack the dargon, but you fall flat on your face when you try to run you the sound of glass breaking; one of your potions shattered!")
+            print("You do 10 damage to yourself and lose a potion!")
+            HP = HP - 10
+            potion = potion - 1
+        if attack == 3:
+            st2 = st * 5
+            st3 = st + 5
+            DH = DH - st3
+            print("Huge success! You did ", st3, " damage to the dargon!")
+        if attack == 4:
+            print("You hit the dargon with all of your might, but your sprain your shoulder in the process :( ")
+            print("You did 40 damage to the dargon, but 20 damage to yourself!")
+            DH = DH - 40
+            HP = HP - 20
+        if attack == 5:
+            print("You barely hit the dargon! It does 10 damage!")
+            DH = DH - 10
+            
+        time.sleep(.5)
+        print("You have ", HP, "health, the dargon has", DH, " health, you have ", arrow," arrows and ", potion,"potions")
+        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+        time.sleep(1)
+    #Bow-----------------------------------------------------------------------------------------------------------------------------
+    if choice == 'b' or choice == 'B':
+        if arrow == 0:
+            print("You have no arrows!")
+        if arrow >= 1:
+            atta = random.randint(1,6)
+            if atta == 1 or atta == 2:
+                print("Your mighty attack hit the dargon's body! It does 30 damage!")
+                DH = DH - 30
+                arrow = arrow - 1
+            if atta == 3:
+                print("You hit the dargon in the eye! It does 50 damage!")
+                DH = DH - 50
+                arrow = arrow - 1
+            if atta == 4:
+                print("You miss!")
+                arrow = arrow - 1
+            if atta == 5:
+                print("You miss horribly! You hit the ceiling of the cave and cause rocks to fall!")
+                print("You do 35 damage to yourself and 60 damage to the dargon")
+                DH = DH - 60
+                HP = HP - 35
+                arrow = arrow - 1
+            if atta == 6:
+                print("You barely hit the dargon! It does 20 damage!")
+                DH = DH - 20
+                arrow = arrow - 1
+        print("You have ", HP, "health, the dargon has", DH, " health, you have ", arrow," arrows and ", potion,"potions")
+        print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+        time.sleep(1)
+    #block------------------------------------------------------------------------------------------------------
+    if choice == 'c' or choice == 'C':
+        ch = random.randint(1,5)
+        if bl >= ch:
+            print("You blocked the dargon's attack!")
+            bloc = True
+        if bl <= ch:
+            print("You did not block the attack! :(")
+    #potion
+    if choice == 'd' or choice == 'D':
+        if potion <= 0:
+            print("You don't have any potions!")
+        if potion >= 1:
+            pot = random.randint(1,5)
+            if pot == 1 or pot == 2 or pot == 3 or pot == 4:
+                print("You are at ", HP, " health and the potion restores 40!")
+                HP = HP + 40
+                potion = potion - 1
+            if pot == 5:
+                print("You dropped your potion on the dargon! It restores the dargon 30 health!")
+                DH = DH + 30
+                potion = potion - 1
+            time.sleep(1)
+            print("You have ", HP, "health, the dargon has", DH, " health, you have ", arrow," arrows and ", potion,"potions")
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+    if choice == 'e' or choice == 'E':
+        if rpot <= 0:
+            print("You have no remedy potions!")
+        if rpot == 1:
+            print("You heal any effects on you!")
+            fire = False
+            poison = False
+            ice = False
+    if speed <= 1:
+        print("Your speed is too low, it gives the dargon a chance to restore 20 health!")
+        DH = DH = 20
+    if done == False:
+        if bloc == False:
+            darg = random.randint(1,6)
+            if darg == 1 or darg == 2:
+                if dr == 1 or dr == 2 or dr == 3:
+                    print("The dargon whips you with its tail! It does 15 damage!")
+                    HP = HP - 15
+                if dr== 4:
+                    print("The Michael Spichael whips you with his tail! It does 25 damage!")
+                    HP = HP - 25
+            if darg == 3:
+                if dr == 1:
+                    print("The dargon breathes fire on you! You are on fire! It does 15 damage a turn!")
+                    fire = True
+                    HP = HP - 15
+                if dr == 2:
+                    print("The dargon breathes ice on you! You are frosty! It does 10 damage a turn and lowers your speed!")
+                    ice = True
+                    HP = HP - 10
+                    speed = speed - 1
+                if dr == 3:
+                    print("The dargon breathes poison on you! You are poisoned! It does 15 damage a turn!")
+                    poison = True
+                    HP = HP - 15
+                if dr == 4:
+                    print("The dargon misses its attack!")
+            if darg == 4:
+                print("The dargon headbutts you sending you flying! It does 25 damage!")
+                HP = HP - 25
+            if darg == 5 or darg == 6:
+                if dr == 1 or dr == 2 or dr == 3:
+                    print("The dargon slaps you with its wing! It does 10 damage!")
+                    HP = HP - 10
+                if dr == 4:
+                    print("The dargon whaps you with its tail! It does 15 damage!")
+                    HP = HP - 15
+            print("You have ", HP, " health and the dargon has ", DH," health!")
+                
+    if HP <= 0:
+        print("You fought valiantly, but in the end you suck :)")
+        time.sleep(.5)
+        done = True
+    if DH <= 0:
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        time.sleep(1)
+        print("You kill the dargon with one last blow!")
+        time.sleep(.5)
+        print("Oh no! With the collapse of the dead dargon the caves begins to rumble as rocks fall!")
+        time.sleep(.2)
+        print("RUN!")
+        time.sleep(.25)
+        print("Do you run back the way you came from (1) or run past the dargon's corpse (2)? ")
+        c1 = input("1 or 2? ")
+        if c1 == '1':
+            print("You try to run back the way you came, but rocks fall in your way!")
+            time.sleep(.5)
+            print("This leaves two ways through the rocks! Left (1) or Right (2)? ")
+            c2 = input("1 or 2? ")
+            if c2 == '1':
+               print("You run to your left and you are immeaditely crushed my rocks! You die!")
+               death = True
+            if c2 == '2':
+                print("You run behind the dargon's corpse and through a narrow opening!")
+                time.sleep(.25)
+                print("You run through the opening crawling over collapsed rocks that scrape your knees!")
+                time.sleep(.25)
+                print("You feel a sharp point drag across your calf! Your leg and pants got ripped!")
+                time.sleep(.25)
+                print("Do you leave your pants behind and possible hurt your leg further (1) or take your time and dislodge your pants and leg carefully (2)?")
+                time.sleep(.25)
+                c5 = input("1 or 2?")
+                if c5 == '1':
+                    print("You run! Who needs pants anyways?")
+                    time.sleep(.25)
+                    print("Luckily your leg didn't scratch any more than it already was!")
+                    time.sleep(.25)
+                    print("You navigate your way through the rubble and you see light!")
+                    time.sleep(.25)
+                    print("You crawl towards it and you are out,")
+                    time.sleep(.25)
+                    print(" but your pants aren't!")
+                    time.sleep(.2)
+                    print("You win, but you don't have pants so do you really win?")
+                    win = True
+                if c5 == '2':
+                    time.sleep(.2)
+                    print("You fumbling caused the point to rip deeper into your leg!")
+                    time.sleep(.2)
+                    print("You bleed out and your corpse is crushed :(!")
+                    death = True
+        if c1 == '2':
+            print("You run past the dargon, narrowly avoiding falling rocks!")
+            time.sleep(.5)
+            print("There is a small hole in the wall (1) and a spacious cavern behind the dargon (2)!")
+            time.sleep(.25)
+            c3 = input("1 or 2?")
+            if c3 == '2':
+                print("You run to the cavern, but there is a huge drop off!")
+                print("Do you jump to your possible death (1) or get crushed to death (2)")
+                c4 = input("1 or 2?")
+                if c4 == '1':
+                    time.sleep(1)
+                    print("You fall for what feels like minutes until you reach light, then a lake!")
+                    time.sleep(.5)
+                    print("You fall into the lake with a ~splash~! You survived!")
+                    win = True
+                if c4 == '2':
+                    print("You are crushed to death :(")
+                    death = True
+                    time.sleep(.1)
+                if c3 == '1':
+                    time.sleep(.25)
+                    print("You run through the opening crawling over collapsed rocks that scrape your knees!")
+                    time.sleep(.25)
+                    print("You feel a sharp point drag across your calf! Your leg and pants got ripped!")
+                    time.sleep(.25)
+                    print("Do you leave your pants behind and possible hurt your leg further (1) or take your time and dislodge your pants and leg carefully (2)?")
+                    time.sleep(.25)
+                    c6 = input("1 or 2?")
+                    if c6 == '1':
+                        print("You run! Who needs pants anyways?")
+                        time.sleep(.25)
+                        print("Luckily your leg didn't scratch any more than it already was!")
+                        time.sleep(.25)
+                        print("You navigate your way through the rubble and you see light!")
+                        time.sleep(.25)
+                        print("You crawl towards it and you are out,")
+                        time.sleep(.25)
+                        print(" but your pants aren't!")
+                        time.sleep(.2)
+                        print("You win, but you don't have pants so do you really win?")
+                        time.sleep(.2)
+                        win = True
+                    if c6 == '2':
+                        time.sleep(.2)
+                        if speed >= '4':
+                            print("Your speed is high enough that you are able to narrowly avoid rocks and escape with your pants!")
+                            time.sleep(.2)
+                            win = True
+                        if speed <= '3':
+                            print("You fumbling caused the point to rip deeper into your leg!")
+                            time.sleep(.2)
+                            print("You bleed out and your corpse is crushed :(!")
+                            death = True
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    if death == True:
+        print("You lose! :(")
+        time.sleep(.5)
+        print("You suck...")
+        done = True
+    if win == True:
+        print("You win!!!")
+        time.sleep(.5)
+        print("You don't suck...")
+        done = True
